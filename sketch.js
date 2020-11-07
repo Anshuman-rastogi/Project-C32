@@ -90,6 +90,8 @@ function draw() {
   textSize(20);
   fill(255);
   text("Drag the Ball & Release it, to launch it towards the blocks", 200, 30);
+  textSize(15);
+  text("Press space to reset the position of the ball", 600,360);
 
   Engine.update(engine);
   
