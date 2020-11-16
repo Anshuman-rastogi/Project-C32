@@ -21,8 +21,12 @@ var ball;
 
 var slingShot;
 
+var score = 0;
+
+var bkgImg;
+
 function preload(){
-  
+  getBgImage();
 }
 
 function setup() {
@@ -85,13 +89,17 @@ function setup() {
 }
 
 function draw() {
-  background(56,44,44); 
+  //background(56,44,44); 
+
+  if(bkgImg)
+      background(backgroundImg);
 
   textSize(20);
-  fill(255);
+  fill(0);
   text("Drag the Ball & Release it, to launch it towards the blocks", 200, 30);
   textSize(15);
   text("Press space to reset the position of the ball", 600,360);
+  text("SCORE: "+score,730,40);
 
   Engine.update(engine);
   
@@ -123,6 +131,32 @@ function draw() {
   block24.display();
   block25.display();
 
+  block1.score();
+  block2.score();
+  block3.score();
+  block4.score();
+  block5.score();
+  block6.score();
+  block7.score();
+  block8.score();
+  block9.score();
+  block10.score();
+  block11.score();
+  block12.score();
+  block13.score();
+  block14.score();
+  block15.score();
+  block16.score();
+  block17.score();
+  block18.score();
+  block19.score();
+  block20.score();
+  block21.score();
+  block22.score();
+  block23.score();
+  block24.score();
+  block25.score();
+
   ball.display();
 
   base1.display();
@@ -145,4 +179,21 @@ function keyPressed(){
 		Matter.Body.setPosition(ball.body, {x:80, y:195});
 		slingShot.attach(ball.body);
 	}
+}
+
+async function getBgImage(){
+  var response = await fetch("https://worldtimeapi.org/api/timezone/Asia/Kolkata");
+  //var response = await fetch("https://worldtimeapi.org/api/timezone/Europe/London");
+  var responseJson = await response.json();
+  var dt = responseJson.datetime;
+  var hr = dt.slice(11,13);
+  
+  var bg = null;
+  if(hr>=6 && hr<=18){
+      bg = "Untitled.png";
+  }
+  else{
+      bg = "2.png";
+  }
+  backgroundImg = loadImage(bg);
 }
