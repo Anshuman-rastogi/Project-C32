@@ -91,9 +91,9 @@ function setup() {
 function draw() {
   //background(56,44,44); 
 
-  if(bkgImg)
-      background(backgroundImg);
-
+  if(bkgImg){
+      background(bkgImg);
+  }
   textSize(20);
   fill(0);
   text("Drag the Ball & Release it, to launch it towards the blocks", 200, 30);
@@ -195,5 +195,5 @@ async function getBgImage(){
   else{
       bg = "2.png";
   }
-  backgroundImg = loadImage(bg);
+  bkgImg = loadImage(bg);
 }
